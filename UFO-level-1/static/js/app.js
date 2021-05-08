@@ -49,15 +49,12 @@ function searchDate() {
     // Get the value property of the input element
     var inputValue = inputElement.property("value");
   
-    console.log(inputValue);
 
     // Check if the input field is not empty
     if (inputValue) {
         // Filter data to the input field value
         var filteredData = tableData.filter(event => event.datetime === inputValue);
   
-        console.log(filteredData);
-      
         // Get a reference to the table body
         var tbody = d3.select("tbody");
     
