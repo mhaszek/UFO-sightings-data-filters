@@ -73,6 +73,10 @@ select {
   outline: none;
 }
 
+.table-responsive {
+  max-height: 725px;
+}
+
 #table-area th {
   text-align: center;
 }
