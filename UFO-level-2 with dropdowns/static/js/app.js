@@ -54,6 +54,20 @@ function searchDate() {
     // Change color of dropdown filters to white
     d3.selectAll(".filter-icon").attr("src", "static/images/filter.jpg");
 
+    // Call function in order to populate all dropdown menu lists with all available options
+    dropdownMenus(menus, tableData); 
+        
+    // Re-load dropdown menus
+    load();
+
+    // Reset dropdown inputs
+    dropdownInputs = {
+        "datetime": "All",
+        "city": "All",
+        "state": "All",
+        "country": "All",
+        "shape": "All"};
+        
     // Select all input elements and get the raw HTML node
     var datetime = d3.select("#datetime");
     var city = d3.select("#cityinput");
@@ -189,7 +203,7 @@ function load() {
 load();
 
 // Initiate base inputs object to handle dropdown menus
-var inputs = {
+var dropdownInputs = {
     "datetime": "All",
     "city": "All",
     "state": "All",
@@ -215,7 +229,7 @@ function dropdownSearch() {
     var value = currentValue.text();
     
     // Update inputs object with currently selected value
-    inputs[key] = value;
+    dropdownInputs[key] = value;
     
     // Select current div element
     var currentDiv = currentList.select(function() { return this.parentNode; });
@@ -233,7 +247,7 @@ function dropdownSearch() {
     var query = {};
 
     // For each element in current inputs object:
-    Object.entries(inputs).forEach(([key, value]) => {
+    Object.entries(dropdownInputs).forEach(([key, value]) => {
 
           // Check if value is different than 'All'
         if (value !== 'All') {
