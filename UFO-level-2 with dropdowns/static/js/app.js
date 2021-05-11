@@ -4,7 +4,7 @@ var tableData = data;
 // YOUR CODE HERE!
 
 // Define function which loads full table
-function loadMainTable() {
+function loadTable(table) {
     // Get a reference to the table body
     var tbody = d3.select("tbody");
 
@@ -12,7 +12,7 @@ function loadMainTable() {
     tbody.html("");
 
     // Loop through every element in the data array and create new rows and columns with values
-    tableData.forEach((event) => {
+    table.forEach((event) => {
 
         var row = tbody.append("tr");
 
@@ -23,7 +23,7 @@ function loadMainTable() {
 };
 
 // Call function in order to render full table 
-loadMainTable();
+loadTable(tableData);
 
 
 // ~~~ CUSTOM SEARCH  ~~~ 
@@ -92,7 +92,7 @@ function searchDate() {
     if (Object.keys(query).length === 0) {
 
         // If query object is empty render full table 
-        loadMainTable();
+        loadTable(tableData);
 
     } else {
         // If query object is not empty filter data using search function
@@ -103,22 +103,7 @@ function searchDate() {
             return Object.keys(this).every((key) => entries[key] === this[key]);
           }
 
-        // Get a reference to the table body
-        var tbody = d3.select("tbody");
-    
-        // Remove any data from the table if already exist
-        tbody.html("");
-    
-        // Loop through every element in the filtered data array and create new rows and columns with values
-        filteredData.forEach((event) => {
-    
-            var row = tbody.append("tr");
-    
-            Object.values(event).forEach(value => {
-            row.append("td").text(value);
-            });
-        }); 
-
+        loadTable(filteredData);
     }
 
 };
@@ -255,7 +240,7 @@ function dropdownSearch() {
     if (Object.keys(query).length === 0) {
 
         // If query object is empty render full table 
-        loadMainTable();
+        loadTable(tableData);
 
         dropdownMenus(menus, tableData); 
 
@@ -270,26 +255,11 @@ function dropdownSearch() {
             return Object.keys(this).every((key) => entries[key] === this[key]);
           }
 
-        // Get a reference to the table body
-        var tbody = d3.select("tbody");
-    
-        // Remove any data from the table if already exist
-        tbody.html("");
-    
-        // Loop through every element in the filtered data array and create new rows and columns with values
-        filteredData.forEach((event) => {
-    
-            var row = tbody.append("tr");
-    
-            Object.values(event).forEach(value => {
-            row.append("td").text(value);
-            });
-        }); 
+        loadTable(filteredData); 
 
         dropdownMenus(menus, filteredData); 
 
         load();
-
     }
 
 };

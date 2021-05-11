@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>UFO Finder</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/superhero/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+  <link rel="stylesheet" href="static/css/style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="index.html">UFO Sightings
+            <img class="nav-ufo" src="static/images/ufo.svg">
+          </a>
+        </div>
+      </div>
+    </nav>
+    <div class="hero text-center">
+      <h1>UFO Sightings</h1>
+      <p>The Truth is Out There</p>
+    </div>
+    <div class="container">
+      <div class="row margin-top-50">
+    
+        <div class="col-md-12">
+          <div id="table-area" class="table-responsive">
+            <table id="ufo-table" class="table table-striped">
+              <thead>
+                <tr>
+                  <th class="table-head">Date
+                    <div class="dropdown">
+                      <button id="btn-date" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                        <img class="filter-icon" src="static/images/filter.jpg">
+                      <span class="caret"></span></button>
+                      <ul id="datetime" class="dropdown-menu dropdown-menu-date">
+                        <li><a href="#">one</a></li>
+                        <li><a href="#">two</a></li>
+                        <li><a href="#">three</a></li>
+                      </ul>
+                    </div>
+                  </th>
+                  <th class="table-head">City
+                    <div class="dropdown">
+                      <button id="btn-city" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                        <img class="filter-icon" src="static/images/filter.jpg">
+                      <span class="caret"></span></button>
+                      <ul id="city" class="dropdown-menu dropdown-menu-city">
+                        <li><a href="#">one</a></li>
+                        <li><a href="#">two</a></li>
+                        <li><a href="#">three</a></li>
+                      </ul>
+                    </div>
+                  </th>
+                  <th class="table-head">State
+                    <div class="dropdown">
+                      <button id="btn-state" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                        <img class="filter-icon" src="static/images/filter.jpg">
+                      <span class="caret"></span></button>
+                      <ul id="state" class="dropdown-menu dropdown-menu-state">
+                        <li><a href="#">one</a></li>
+                        <li><a href="#">two</a></li>
+                        <li><a href="#">three</a></li>
+                      </ul>
+                    </div>
+                  </th>
+                  <th class="table-head">Country
+                    <div class="dropdown">
+                      <button id="btn-country" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                        <img class="filter-icon" src="static/images/filter.jpg">
+                      <span class="caret"></span></button>
+                      <ul id="country" class="dropdown-menu dropdown-menu-country">
+                        <li><a href="#">one</a></li>
+                        <li><a href="#">two</a></li>
+                        <li><a href="#">three</a></li>
+                      </ul>
+                    </div>
+                  </th>
+                  <th class="table-head">Shape
+                    <div class="dropdown">
+                      <button id="btn-shape" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                        <img class="filter-icon" src="static/images/filter.jpg">
+                      <span class="caret"></span></button>
+                      <ul id="shape" class="dropdown-menu dropdown-menu-shape">
+                        <li><a href="#">one</a></li>
+                        <li><a href="#">two</a></li>
+                        <li><a href="#">three</a></li>
+                      </ul>
+                    </div>
+                  </th>
+                  <th class="table-head">Duration
+                    <form id="duration-form">
+                    <div class="input-group rounded">
+                      <input id="duration" type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
+                        aria-describedby="search-addon" />
+                      <span class="input-group-text border-0" id="search-addon">
+                        <i class="fas fa-search"></i>
+                      </span>
+                    </div></form>
+                  </th>
+                  <th class="table-head">Comments
+                    <form id="comments-form">
+                    <div class="input-group rounded">
+                      <input id="comments" type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
+                        aria-describedby="search-addon" />
+                      <span class="input-group-text border-0" id="search-addon">
+                        <i class="fas fa-search"></i>
+                      </span>
+                    </div></form>
+                  </th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="footer">
+      <span class="bottom">UFO Sightings</span>
+    </footer>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.11.0/d3.js"></script>
+  <script src="static/js/data.js"></script>
+  <script src="static/js/app.js"></script>
+</body>
+
+</html>
