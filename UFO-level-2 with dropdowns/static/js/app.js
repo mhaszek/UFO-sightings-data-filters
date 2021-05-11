@@ -51,6 +51,7 @@ function searchDate() {
     // Prevent the page from refreshing
     d3.event.preventDefault();
 
+    // Change color of dropdown filters to white
     d3.selectAll(".filter-icon").attr("src", "static/images/filter.jpg");
 
     // Select all input elements and get the raw HTML node
@@ -167,25 +168,27 @@ function dropdownMenus(dropdownMenus, dataset) {
 
 dropdownMenus(menus, tableData); 
 
+// Define function which selects dropdown menu elements and creates event handlers for them
 function load() {
 
-// Select the list items
-var dateItems = dateMenu.selectAll("li");
-var cityItems = cityMenu.selectAll("li");
-var stateItems = stateMenu.selectAll("li");
-var countryItems = countryMenu.selectAll("li");
-var shapeItems = shapeMenu.selectAll("li");
+    // Select the list items
+    var dateItems = dateMenu.selectAll("li");
+    var cityItems = cityMenu.selectAll("li");
+    var stateItems = stateMenu.selectAll("li");
+    var countryItems = countryMenu.selectAll("li");
+    var shapeItems = shapeMenu.selectAll("li");
 
-// Create event handlers 
-dateItems.on("click", dropdownSearch);
-cityItems.on("click", dropdownSearch);
-stateItems.on("click", dropdownSearch);
-countryItems.on("click", dropdownSearch);
-shapeItems.on("click", dropdownSearch);
-};
+    // Create event handlers 
+    dateItems.on("click", dropdownSearch);
+    cityItems.on("click", dropdownSearch);
+    stateItems.on("click", dropdownSearch);
+    countryItems.on("click", dropdownSearch);
+    shapeItems.on("click", dropdownSearch);
+    };
 
 load();
 
+// Initiate base inputs object to handle dropdown menus
 var inputs = {
     "datetime": "All",
     "city": "All",
@@ -193,7 +196,7 @@ var inputs = {
     "country": "All",
     "shape": "All"};
 
-// Complete the event handler function for the dropdown menu lists
+// Define event handler function for the dropdown menu lists
 function dropdownSearch() {
 
     // Prevent the page from refreshing
@@ -201,26 +204,32 @@ function dropdownSearch() {
     
     // Select currently clicked input element and get the raw HTML node
     var currentValue = d3.select(this);
-
+    
+    // Select the list of the currently clicked input element
     var currentList = d3.select(this.parentNode);
 
+    // Get the id from the current list
     var key = currentList.attr("id");
-
+    
+    // Get the value from the currently clicked input element
     var value = currentValue.text();
-
+    
+    // Update inputs object with currently selected value
     inputs[key] = value;
-
+    
+    // Select current div element
     var currentDiv = currentList.select(function() { return this.parentNode; });
 
+    // Check if currently selected filter is not set to 'All'
     if (value !== 'All') {
-        // change filer color to white
+        // change filer color to active
         currentDiv.select("button>img").attr("src", "static/images/filter-active.jpg");
     } else {
-        // change color
+        // change filer color to white
         currentDiv.select("button>img").attr("src", "static/images/filter.jpg");
     }
 
-    // Create an empty object for input values
+    // Create an empty object for query values
     var query = {};
 
     // For each element in current inputs object:
@@ -242,8 +251,10 @@ function dropdownSearch() {
         // If query object is empty render full table 
         loadTable(tableData);
 
+        // Call function in order to populate all dropdown menu lists with all available options
         dropdownMenus(menus, tableData); 
-
+        
+        // Re-load dropdown menus
         load();
 
     } else {
@@ -251,14 +262,17 @@ function dropdownSearch() {
         filteredData = tableData.filter(search, query);
         
         // Return data object entries if any of their values are matching query object values
-        function search(entries){
+        function search(entries) {
             return Object.keys(this).every((key) => entries[key] === this[key]);
-          }
-
+        }
+        
+        // Call function in order to render filtered table 
         loadTable(filteredData); 
 
+        // Call function in order to populate all dropdown menu lists with new available options
         dropdownMenus(menus, filteredData); 
 
+        // Re-load dropdown menus
         load();
     }
 
