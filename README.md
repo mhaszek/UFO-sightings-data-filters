@@ -72,6 +72,11 @@ To run the examples locally save the chosen folder and run the `index.html` file
  * HTML
  * CSS
 
+
+#
+
+#### Contact: mil.haszek@gmail.com
+
  
 
 
